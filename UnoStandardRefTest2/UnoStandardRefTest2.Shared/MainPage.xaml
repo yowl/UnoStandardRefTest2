@@ -6,9 +6,11 @@
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     mc:Ignorable="d">
-
+  <Page.Resources>
+      <local:DummyConverter x:Key="conv"/>
+  </Page.Resources>
     <StackPanel Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
-		<TextBlock Text="Hello, world !" Margin="20" FontSize="30" />
-        <ComboBox x:Name="cmb" ItemsSource="{Binding Items}" SelectedItem="{Binding SelectedItem, Mode=TwoWay}"></ComboBox>
+        <TextBlock Text="{Binding SomeProperty, Converter={StaticResource conv}}"></TextBlock>
+        <Button Click="ButtonBase_OnClick">Fire Changed</Button>
     </StackPanel>
 </Page>
