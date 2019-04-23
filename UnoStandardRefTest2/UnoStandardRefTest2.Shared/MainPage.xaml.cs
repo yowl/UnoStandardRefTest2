@@ -27,33 +27,28 @@ namespace UnoStandardRefTest2
     {
         public MainPage()
         {
-            var s = new Stopwatch();
             Items = Enumerable.Range(0, 5).Select(i => i.ToString()).ToList();
             //            Items = Enumerable.Range(0, 2000).Select(i => i.ToString()).ToList();
             this.InitializeComponent();
-            s.Start();
             DataContext = this;
-//            textBlock.Text = s.Elapsed.ToString("G");
-
-            cmb.KeyDown += DeletableComboBoxKeyDown;
         }
 
-        void DeletableComboBoxKeyDown(object sender, KeyRoutedEventArgs e)
-        {
-            if (e.Key == VirtualKey.Delete || e.Key == VirtualKey.Back)
-            {
-                SelectedItem = null;
-            }
-        }
         public List<string> Items { get; set; }
 
-        public static readonly DependencyProperty SelectedItemProperty = DependencyProperty.Register(
-            "SelectedItem", typeof(object), typeof(MainPage), new PropertyMetadata(default(object)));
+        public static readonly DependencyProperty SelectedValueProperty = DependencyProperty.Register(
+            "SelectedValue", typeof(object), typeof(MainPage), new PropertyMetadata(default(object)));
 
-        public object SelectedItem
+        public object SelectedValue
         {
-            get { return (object)GetValue(SelectedItemProperty); }
-            set { SetValue(SelectedItemProperty, value); }
+            get { return (object)GetValue(SelectedValueProperty); }
+            set { SetValue(SelectedValueProperty, value); }
+        }
+
+        void BtnClick(object sender, RoutedEventArgs e)
+        {
+            Debug.WriteLine("SelectedIndex before reset " + cmb.SelectedIndex);
+            SelectedValue = null;
+            Debug.WriteLine("SelectedIndex after reset " + cmb.SelectedIndex);
         }
     }
 }

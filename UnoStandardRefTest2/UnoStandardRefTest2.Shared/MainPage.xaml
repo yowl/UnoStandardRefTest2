@@ -9,6 +9,8 @@
 
     <StackPanel Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
 		<TextBlock Text="Hello, world !" Margin="20" FontSize="30" />
-        <ComboBox x:Name="cmb" ItemsSource="{Binding Items}" SelectedItem="{Binding SelectedItem, Mode=TwoWay}"></ComboBox>
+        <ComboBox x:Name="cmb" ItemsSource="{Binding Items}" SelectedValue="{Binding SelectedValue, Mode=TwoWay}"></ComboBox>
+        <Button Click="BtnClick">Clear Combo</Button>
+
     </StackPanel>
 </Page>

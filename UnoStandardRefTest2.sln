@@ -1,16 +1,17 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 15
-VisualStudioVersion = 15.0.28307.539
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.28803.202
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{D954291E-2A0B-460D-934E-DC6B0785DB48}") = "UnoStandardRefTest2.Shared", "UnoStandardRefTest2\UnoStandardRefTest2.Shared\UnoStandardRefTest2.Shared.shproj", "{6279C845-92F8-4333-AB99-3D213163593C}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UnoStandardRefTest2.UWP", "UnoStandardRefTest2\UnoStandardRefTest2.UWP\UnoStandardRefTest2.UWP.csproj", "{230C916E-18D8-40E1-A52A-6B785B321F9B}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UnoStandardRefTest2.Wasm", "UnoStandardRefTest2\UnoStandardRefTest2.Wasm\UnoStandardRefTest2.Wasm.csproj", "{722DD4B9-DBE6-465E-AEB9-FD7FAEC58742}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "UnoStandardRefTest2.Wasm", "UnoStandardRefTest2\UnoStandardRefTest2.Wasm\UnoStandardRefTest2.Wasm.csproj", "{722DD4B9-DBE6-465E-AEB9-FD7FAEC58742}"
 EndProject
 Global
 	GlobalSection(SharedMSBuildProjectFiles) = preSolution
+		UnoStandardRefTest2\UnoStandardRefTest2.Shared\UnoStandardRefTest2.Shared.projitems*{230c916e-18d8-40e1-a52a-6b785b321f9b}*SharedItemsImports = 4
 		UnoStandardRefTest2\UnoStandardRefTest2.Shared\UnoStandardRefTest2.Shared.projitems*{6279c845-92f8-4333-ab99-3d213163593c}*SharedItemsImports = 13
 	EndGlobalSection
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
