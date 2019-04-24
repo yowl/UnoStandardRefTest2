@@ -6,11 +6,23 @@
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     mc:Ignorable="d">
-
+    <Page.Resources>
+        <DataTemplate x:Key="dataTemplate">
+            <Button Margin="5" Height="50" Width="250">
+                <Button.Content>
+                    <TextBlock Text="Wrap text only when long" TextWrapping="Wrap"/>
+                </Button.Content>
+            </Button>
+        </DataTemplate>
+    </Page.Resources>
     <StackPanel Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
-		<TextBlock Text="Hello, world !" Margin="20" FontSize="30" />
-        <ComboBox x:Name="cmb" ItemsSource="{Binding Items}" SelectedValue="{Binding SelectedValue, Mode=TwoWay}"></ComboBox>
-        <Button Click="BtnClick">Clear Combo</Button>
-
+        <TextBlock Text="Hello, world !" Margin="20" FontSize="30" />
+        <Button Margin="5" Height="50" Width="250">
+            <Button.Content>
+                <TextBlock Text="Wrap text only when long" TextWrapping="Wrap"/>
+            </Button.Content>
+        </Button>
+        <ListView ItemsSource="{Binding Items}" ItemTemplate="{StaticResource dataTemplate}">
+        </ListView>
     </StackPanel>
 </Page>

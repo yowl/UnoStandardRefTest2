@@ -34,21 +34,5 @@ namespace UnoStandardRefTest2
         }
 
         public List<string> Items { get; set; }
-
-        public static readonly DependencyProperty SelectedValueProperty = DependencyProperty.Register(
-            "SelectedValue", typeof(object), typeof(MainPage), new PropertyMetadata(default(object)));
-
-        public object SelectedValue
-        {
-            get { return (object)GetValue(SelectedValueProperty); }
-            set { SetValue(SelectedValueProperty, value); }
-        }
-
-        void BtnClick(object sender, RoutedEventArgs e)
-        {
-            Debug.WriteLine("SelectedIndex before reset " + cmb.SelectedIndex);
-            SelectedValue = null;
-            Debug.WriteLine("SelectedIndex after reset " + cmb.SelectedIndex);
-        }
     }
 }
