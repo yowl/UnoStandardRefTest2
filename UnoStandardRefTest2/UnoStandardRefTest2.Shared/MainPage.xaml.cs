@@ -1,9 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel;
-using System.Diagnostics;
 using System.IO;
 using System.Linq;
+using System.Runtime.CompilerServices;
 using System.Runtime.InteropServices.WindowsRuntime;
 using Windows.Foundation;
 using Windows.Foundation.Collections;
@@ -18,43 +18,81 @@ using Windows.UI.Xaml.Navigation;
 #if __WASM__
 using Uno.Extensions;
 #endif
-// The Blank Page item template is documented at http://go.microsoft.com/fwlink/?LinkId=402352&clcid=0x409
 
 namespace UnoStandardRefTest2
 {
     /// <summary>
     /// An empty page that can be used on its own or navigated to within a Frame.
     /// </summary>
-    public sealed partial class MainPage : Page
+    public sealed partial class MainPage : Page, INotifyPropertyChanged
     {
+        private ComboBox comboBox;
+
         public MainPage()
         {
-            Items = Enumerable.Range(0, 5).Select(i => i.ToString()).ToList();
-            //            Items = Enumerable.Range(0, 2000).Select(i => i.ToString()).ToList();
             this.InitializeComponent();
             DataContext = this;
+            //Items = Enumerable.Range(0, 5).Select(i => i.ToString()).ToList();
+            Items = new List<string>
+            {
+                "abcstring1",
+                "xyzstring2",
+                "pstring3",
+                "jstring4",
+                "string5",
+            };
 #if __WASM__
-//            var keyDownHandler = new KeyEventHandler(OnMenuBarItemKeyDown);
-//            AddHandler(UIElement.KeyDownEvent, keyDownHandler, true);
-//            comboBox.AddHandler(UIElement.KeyDownEvent, keyDownHandler, true);
-            //            this.RegisterHtmlEventHandler("keydown", OnSimpleEvent);
+            comboBox = comboBoxWasm;
+            //var keyDownHandler = new KeyEventHandler(OnMenuBarItemKeyDown);
+            //AddHandler(UIElement.KeyDownEvent, keyDownHandler, true);
+            //comboBox.AddHandler(UIElement.KeyDownEvent, keyDownHandler, true);
+            //this.RegisterHtmlEventHandler("keydown", OnSimpleEvent);
+#else
+            comboBox = comboBoxWin;
 #endif
         }
 
-//        void OnMenuBarItemKeyDown(object sender, KeyRoutedEventArgs e)
-//        {
-//            if (e.Key == VirtualKey.Space)
-//            {
-//                comboBox.IsDropDownOpen = !comboBox.IsDropDownOpen;
-//            }
-//            if (e.Key == VirtualKey.Down)
-//            {
-//                if (comboBox.IsDropDownOpen)
-//                {
-//                    comboBox.SelectedIndex++;
-//                }
-//            }
-//        }
+        void OnMenuBarItemKeyDown(object sender, KeyRoutedEventArgs e)
+        {
+            //Console.WriteLine($"Key {e.Key} was pressed");
+            //if (e.Key == VirtualKey.Space)
+            //{
+            //    Console.WriteLine("ComboBox should open");
+            //    comboBox.IsDropDownOpen = !comboBox.IsDropDownOpen;
+            //}
+
+            //if (e.Key == VirtualKey.Up)
+            //{
+            //    if (comboBox.IsDropDownOpen)
+            //    {
+            //        var selectedIndex = (comboBox.SelectedIndex - 1) % Items.Count;
+            //        if (selectedIndex < 0)
+            //        {
+            //            selectedIndex = Items.Count - 1;
+            //        }
+
+            //        comboBox.SelectedIndex = selectedIndex;
+            //    }
+            //}
+            //if (e.Key == VirtualKey.Down)
+            //{
+            //    if (comboBox.IsDropDownOpen)
+            //    {
+            //        var selectedIndex = (comboBox.SelectedIndex + 1) % Items.Count;
+            //        if (selectedIndex >= Items.Count)
+            //        {
+            //            selectedIndex = 0;
+            //        }
+
+            //        comboBox.SelectedIndex = selectedIndex;
+            //    }
+            //}
+            //if (e.Key == VirtualKey.Delete || e.Key == VirtualKey.Back)
+            //{
+            //    comboBox.SelectedItem = null;
+            //    comboBox.IsDropDownOpen = false;
+            //}
+        }
 
 #if __WASM__
         private void OnSimpleEvent(object sender, EventArgs e)
@@ -67,7 +105,22 @@ namespace UnoStandardRefTest2
             else Console.WriteLine("e is " + e.GetType());
         }
 #endif
+        private List<string> _items;
+        public List<string> Items
+        {
+            get => _items;
+            set
+            {
+                _items = value;
+                OnPropertyChanged();
+            }
+        }
 
-        public List<string> Items { get; set; }
+        public event PropertyChangedEventHandler PropertyChanged;
+
+        private void OnPropertyChanged([CallerMemberName] string propertyName = null)
+        {
+            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
+        }
     }
 }

@@ -8,7 +8,7 @@
     xmlns:shared="clr-namespace:UnoStandardRefTest2.Shared"
     xmlns:wasm="http://uno.ui/wasm"
     xmlns:win="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
-    mc:Ignorable="d wasm win">
+    mc:Ignorable="d wasm">
     <Page.Resources>
         <DataTemplate x:Key="dataTemplate">
             <Button Margin="5" Height="50" Width="250">
@@ -18,11 +18,12 @@
             </Button>
         </DataTemplate>
     </Page.Resources>
+
     <StackPanel Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
         <TextBox/>
-        <win:ComboBox ItemsSource="{Binding Items}" >
+        <win:ComboBox x:Name="comboBoxWin" ItemsSource="{Binding Items}" >
         </win:ComboBox>
-        <wasm:ComboBox ItemsSource="{Binding Items}" shared:APTest.KeyAware="True">
+        <wasm:ComboBox x:Name="comboBoxWasm" ItemsSource="{Binding Items}" shared:APTest.KeyAware="True">
         </wasm:ComboBox>
     </StackPanel>
 </Page>
