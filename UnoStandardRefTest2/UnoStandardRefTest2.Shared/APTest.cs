@@ -8,7 +8,7 @@ namespace UnoStandardRefTest2.Shared
     public class APTest 
     {
         public static readonly DependencyProperty KeyAwareProperty = DependencyProperty.RegisterAttached(
-            "KeyAware", typeof(bool), typeof(APTest), new PropertyMetadata(KeyAwareChanged));
+            "KeyAware", typeof(bool), typeof(APTest), new PropertyMetadata(false, KeyAwareChanged));
 
         static void KeyAwareChanged(DependencyObject dependencyobject, DependencyPropertyChangedEventArgs args)
         {

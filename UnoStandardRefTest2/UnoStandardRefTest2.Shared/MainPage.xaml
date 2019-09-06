@@ -8,15 +8,8 @@
     xmlns:shared="clr-namespace:UnoStandardRefTest2.Shared"
     xmlns:wasm="http://uno.ui/wasm"
     xmlns:win="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
-    mc:Ignorable="d wasm win">
+    mc:Ignorable="d wasm">
     <Page.Resources>
-        <DataTemplate x:Key="dataTemplate">
-            <Button Margin="5" Height="50" Width="250">
-                <Button.Content>
-                    <TextBlock Text="Wrap text only when long" TextWrapping="Wrap"/>
-                </Button.Content>
-            </Button>
-        </DataTemplate>
     </Page.Resources>
     <StackPanel Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
         <TextBox/>
