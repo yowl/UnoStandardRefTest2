@@ -12,10 +12,6 @@
     <Page.Resources>
     </Page.Resources>
     <StackPanel Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
-        <TextBox/>
-        <win:ComboBox ItemsSource="{Binding Items}" >
-        </win:ComboBox>
-        <wasm:ComboBox ItemsSource="{Binding Items}" shared:APTest.KeyAware="True">
-        </wasm:ComboBox>
+        <Button Click="ButtonBase_OnClick">Open dialog</Button>
     </StackPanel>
 </Page>

@@ -29,45 +29,20 @@ namespace UnoStandardRefTest2
     {
         public MainPage()
         {
-            Items = Enumerable.Range(0, 5).Select(i => i.ToString()).ToList();
-            //            Items = Enumerable.Range(0, 2000).Select(i => i.ToString()).ToList();
             this.InitializeComponent();
             DataContext = this;
-#if __WASM__
-//            var keyDownHandler = new KeyEventHandler(OnMenuBarItemKeyDown);
-//            AddHandler(UIElement.KeyDownEvent, keyDownHandler, true);
-//            comboBox.AddHandler(UIElement.KeyDownEvent, keyDownHandler, true);
-            //            this.RegisterHtmlEventHandler("keydown", OnSimpleEvent);
-#endif
         }
 
-//        void OnMenuBarItemKeyDown(object sender, KeyRoutedEventArgs e)
-//        {
-//            if (e.Key == VirtualKey.Space)
-//            {
-//                comboBox.IsDropDownOpen = !comboBox.IsDropDownOpen;
-//            }
-//            if (e.Key == VirtualKey.Down)
-//            {
-//                if (comboBox.IsDropDownOpen)
-//                {
-//                    comboBox.SelectedIndex++;
-//                }
-//            }
-//        }
-
-#if __WASM__
-        private void OnSimpleEvent(object sender, EventArgs e)
+        void ButtonBase_OnClick(object sender, RoutedEventArgs e)
         {
-            Console.WriteLine("keydown2");
-            if (e == null)
+            var d = new ContentDialog();
+            d.PrimaryButtonText = "Ok";
+            d.Closing += (dialog, args) =>
             {
-                Console.WriteLine("e is null " );
-            }
-            else Console.WriteLine("e is " + e.GetType());
+                Console.WriteLine("closing");
+            };
+            Console.WriteLine("show");
+            d.ShowAsync();
         }
-#endif
-
-        public List<string> Items { get; set; }
     }
 }
